@@ -1,95 +1,29 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import ItemList from "@/components/ItemList";
+import { ItemTypes } from "@/consts";
+import { Item } from "@/types";
+import { Container, Typography } from "@mui/material";
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const initialItems: Item[] = [
+    { type: ItemTypes.Fruit, name: "Apple" },
+    { type: ItemTypes.Vegetable, name: "Broccoli" },
+    { type: ItemTypes.Vegetable, name: "Mushroom" },
+    { type: ItemTypes.Fruit, name: "Banana" },
+    { type: ItemTypes.Vegetable, name: "Tomato" },
+    { type: ItemTypes.Fruit, name: "Orange" },
+    { type: ItemTypes.Fruit, name: "Mango" },
+    { type: ItemTypes.Fruit, name: "Pineapple" },
+    { type: ItemTypes.Vegetable, name: "Cucumber" },
+    { type: ItemTypes.Fruit, name: "Watermelon" },
+    { type: ItemTypes.Vegetable, name: "Carrot" },
+  ];
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+  return (
+    <Container maxWidth="lg" sx={{ p: 4 }}>
+      <Typography variant="h4" align="center" gutterBottom>
+        Item List Manager
+      </Typography>
+      <ItemList initialItems={initialItems} />
+    </Container>
   );
 }
